@@ -1,0 +1,23 @@
+.logo {
+  width: 120px;
+}
+.logo:hover{
+  width: 150px;
+}
+li {
+  padding: 0px 30px 0px 30px;
+}
+li:hover {
+  background-color: #17a2b8;
+  -webkit-transition: background-color 1s;
+  -moz-transition: background-color 1s;
+  -o-transition: background-color 1s;
+  transition: background-color 1s;
+  
+}
+li:hover a:hover{
+  color: white;
+}
+li:hover a{
+  color: white;
+}

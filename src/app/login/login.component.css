@@ -1,0 +1,13 @@
+.card {
+  max-width: 400px;
+  margin: auto;
+}
+
+#imgBg {
+  background-image: url("/assets/image/bg4.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 750px;
+  width: auto;
+}

@@ -1,0 +1,15 @@
+a {
+  color: black;
+}
+input {
+  width: 5%;
+}
+.form-control {
+  background-color: white;
+}
+input {
+  text-align: center;
+}
+.container{
+  margin-top: 50px;
+}
