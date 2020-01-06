@@ -1,29 +1,17 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
-import { PRODUCTS } from '../models/productList';
-
+const API = 'http://www.mocky.io/v2/5e1183c43100005400593eee';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   products: Product[];
-  constructor() {
+  constructor(private http : HttpClient) {
 
   }
-  getProduct(): Product[] {
-    return PRODUCTS;
-  }
-  getProductId(id: number) {
-    this.products = this.getProduct();
-    let result = null;
-    this.products.forEach(element => {
-      if (element.productId === id) {
-        result = element;
-        console.log(result + "result");
-        return result;
-
-      }
-    });
-    return result;
+  getProduct(){
+    return this.http.get<Product[]>(API);
   }
 }

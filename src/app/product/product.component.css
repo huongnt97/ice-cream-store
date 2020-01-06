@@ -8,3 +8,14 @@ h3 {
   margin-left: 15px;
   margin-right: 15px;
 }
+img:hover {
+    cursor: pointer;
+}
+.modal-header{
+  background-color: #17a2b8;
+
+}
+.modal-title{
+  color: white;
+}
+

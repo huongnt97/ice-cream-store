@@ -13,7 +13,7 @@
             class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/home/product'" [routerLinkActiveOptions]="{exact:true}"
+        <a class="nav-link" [routerLink]="'/home/products'"
           routerLinkActive="active-link"><i class="fa fa-list-alt"></i> Product <span
             class="sr-only">(current)</span></a>
       </li>
@@ -22,16 +22,16 @@
           [routerLink]="['/Category']" routerLinkActive="active-link">Ranking</a>
       </li> -->
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" [routerLink]="[{ outlets: { shop:['order']} }]"
+        <a class="nav-link" routerLinkActive="active" [routerLink]="'/home/order'"
         [routerLinkActiveOptions]="{exact:true}"><i class="fa fa-suitcase"></i> Order <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <ul class="navbar-nav">
       <li>
-        <a class="nav-link" [routerLink]="'/home/profile'"><i class="fa fa-fw fa-user"></i> Shop</a>
-      </li>
+        <a class="nav-link" [routerLink]="'/home/profile'">
+          <i class="fa fa-fw fa-user"></i>{{profile}}</a>
       <li>
-        <a class="nav-link" routerLink="/login"><i class="fa fa-fw fa-user"></i> Logout</a>
+        <a class="nav-link" [routerLink]="'/login'" (click)="logout()"><i class="fa fa-fw fa-user"></i> Logout</a>
       </li>
     </ul>
   </div>

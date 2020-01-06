@@ -1,3 +1,5 @@
+import { ShopComponent } from './shop/shop.component';
+import { AuthenticationGuard } from './service/guards/authentication.guard';
 import { ShopDetailComponent } from './shop-detail/shop-detail.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,17 +13,20 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthenticationGuard],
     children: [
       {
-        path: 'product', component: ProductComponent,
+        path: 'products', component: ProductComponent,
       },
-      { path: 'product/:id', component: DetailProductComponent },
+      { path: 'products/:id', component: DetailProductComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'profile', component: ShopDetailComponent },
+      { path: 'order', component: ShopComponent },
+      { path: '', redirectTo: '/home/dashboard', pathMatch: 'full' },
     ],
   },
   { path: 'login', component: LoginComponent },
-  { path: '', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
   {
     path: '**', component: NotFoundComponent
   },

@@ -1,3 +1,5 @@
+import { UserService } from './service/user.service';
+import { AuthenticationGuard } from './service/guards/authentication.guard';
 import { ProductService } from './service/product.service';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { ShopDetailComponent } from './shop-detail/shop-detail.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +28,16 @@ import { ShopDetailComponent } from './shop-detail/shop-detail.component';
     DashboardComponent,
     ProductComponent,
     DetailProductComponent,
-    ShopDetailComponent
+    ShopDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
   ],
-  providers: [ProductService],
+  providers: [ProductService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

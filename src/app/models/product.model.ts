@@ -8,4 +8,5 @@ export class Product {
     updateAt: string;
     quantity: number;
     price: number;
+    status: boolean;
 }
