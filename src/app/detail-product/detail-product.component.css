@@ -25,3 +25,9 @@ input[type="text"]
     font-weight: bold;
     margin-bottom: 10px;
 }
+.custom-file{
+  margin-top: 5px;
+}
+img:hover{
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}

@@ -16,7 +16,9 @@ import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { ShopDetailComponent } from './shop-detail/shop-detail.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ProfileComponent } from './profile/profile.component';
+import { OrderComponent } from './order/order.component';
+import { ChartModule } from 'angular-highcharts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,13 +31,15 @@ import { HttpClientModule } from '@angular/common/http';
     ProductComponent,
     DetailProductComponent,
     ShopDetailComponent,
+    ProfileComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
+    ChartModule
   ],
   providers: [ProductService, AuthenticationGuard],
   bootstrap: [AppComponent]

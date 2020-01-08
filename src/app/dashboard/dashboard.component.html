@@ -1,1 +1,36 @@
-<div class="bg">
+<div class="main">
+  <div class="row">
+    <div class="col-md-auto">
+        <div class="card text-white  mb-3" style="max-width: 18rem;">
+            <div class="card-header bg-success">Total orders of the day</div>
+            <div class="card-body">
+              <h5 class="card-title">3 Orders</h5>
+              <p class="card-text">Total products: 15 </p>
+            </div>
+          </div>
+        <div class="card text-white  mb-3"  style="max-width: 18rem;">
+            <div class="card-header bg-warning">Total orders of the month</div>
+            <div class="card-body">
+              <h5 class="card-title">30 Orders</h5>
+              <p class="card-text">Total products: 150 </p>
+            </div>
+          </div>
+      <div class="card text-white  mb-3" style="max-width: 18rem;" >
+          <div class="card-header bg-info">Revenue</div>
+          <div class="card-body">
+            <h5 class="card-title">10,000,000 đ</h5>
+            <p class="card-text">by 8/10 of the previous month's revenue</p>
+          </div>
+        </div>
+    </div>
+    <div class="col">
+      <div class="chart">
+        <!-- <div class="bg"></div> -->
+        <div class="card">
+          <div [chart]="chart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

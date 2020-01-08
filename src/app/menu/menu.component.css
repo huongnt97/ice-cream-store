@@ -1,23 +1,33 @@
 .logo {
   width: 120px;
 }
-.logo:hover{
+.logo:hover {
   width: 150px;
 }
-li {
+ul li {
   padding: 0px 30px 0px 30px;
 }
-li:hover {
+ul li:hover {
   background-color: #17a2b8;
   -webkit-transition: background-color 1s;
   -moz-transition: background-color 1s;
   -o-transition: background-color 1s;
   transition: background-color 1s;
-  
 }
-li:hover a:hover{
+ul li:hover a:hover {
   color: white;
 }
-li:hover a{
+ul li:hover a {
   color: white;
+}
+
+.menu{
+  background-color: #17a2b8;
+
+}
+.child{
+  color: white;
+}
+.child:hover{
+  background-color: #4EB1A9;
 }

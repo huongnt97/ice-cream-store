@@ -13,7 +13,7 @@
           <div class="col"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           </div>
           <div class="col-12 col-sm-auto">
-            <button class="btn btn-outline-info" type="submit">Search</button>
+            <button class="btn btn-outline-info" type="submit">Search <i class="fa fa-search"></i></button>
           </div>
         </div>
         <br>
@@ -65,7 +65,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Add product</h4>
+          <h4 class="modal-title" id="myModalLabel">Add product for store</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
               aria-hidden="true">&times;</span>
           </button>
@@ -73,27 +73,44 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-3 py-1">Name:</div>
-            <div class="col-8"><input maxlength="50" class="form-control"></div>
+            <div class="col-8">
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>Product 1</option>
+                <option>Product 2</option>
+                <option>Product 3</option>
+                <option>Product 4</option>
+                <option>Product 5</option>
+              </select></div>
           </div>
           <br>
           <div class="row">
             <div class="col-3 py-3">Description:</div>
-            <div class="col-8"><textarea maxlength="100" class="form-control" aria-label="With textarea"></textarea></div>
+            <div class="col-8"><textarea maxlength="100" class="form-control" aria-label="With textarea"
+                readonly></textarea></div>
           </div>
           <br>
           <div class="row">
             <div class="col-3 py-1">Price:</div>
+            <div class="col-8"><input type="number" value="0" class="form-control" readonly></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-3 py-1">Quantity:</div>
             <div class="col-8"><input type="number" value="0" class="form-control"></div>
           </div>
           <br>
           <div class="row">
-            <div class="col-3 py-1">quantity:</div>
-            <div class="col-8"><input type="number" value="0" class="form-control"></div>
+            <div class="col-3 py-1">Status:</div>
+            <div class="col-8"><select class="form-control" id="exampleFormControlSelect1">
+              <option>Available</option>
+              <option>Unavailable</option>
+            </select></div>
           </div>
           <br>
           <div class="row">
             <div class="col-3 py-1">Image:</div>
-            <div class="col-8"><input type="file" class="form-control"></div>
+            <div class="col-8"><img src="http://kinhteluat.tmu.edu.vn/templates/not-found.png"
+                class="img-fluid img-thumbnail" alt="avatar"></div>
           </div>
           <br>
         </div>

@@ -1,0 +1,26 @@
+a{
+    color:black;
+}
+img {
+    height: 250px;
+    width: 250px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+img:hover{
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+strong{
+  font-size: 25px;;
+  margin-left: 15px;
+}
+.notice{
+  margin-left: 15px;
+  font-size: 20px;;
+}
+.btn{
+  margin-left: 15px;
+}
