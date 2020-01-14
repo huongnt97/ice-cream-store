@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { MessageService } from '../../service/message.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ProductList } from './../../models/productlist.model';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -11,6 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ProductComponent implements OnInit {
   products: Product[];
+  productList: ProductList;
   formProduct = new FormControl({
     selectProduct: new FormControl(''),
     quantity: new FormControl(''),
@@ -21,14 +23,13 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private msg: MessageService
   ) {
-    // this.productService.getProduct().subscribe(res => {
-    //   this.products = res;
-    // },
-    //   ({ err }) => { });
-
   }
 
   ngOnInit() {
+     this.productService.getProductOfStore().subscribe(res => {
+      this.productList = res;
+    },
+      ({ err }) => { });
   }
   search() {
     this.msg.showSuccess('Search successful');

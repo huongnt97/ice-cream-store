@@ -1,11 +1,11 @@
-import { UserService } from '../service/user.service';
+import { UserService } from '../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../models/user.model';
-import { MessageService } from '../service/message.service';
-import { AuthenticationService } from './../service/authentication.service';
+import { User } from '../../models/user.model';
+import { MessageService } from '../../service/message.service';
+import { AuthenticationService } from '../../service/authentication.service';
 import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/template';
-import { Role } from '../models/role';
+import { Role } from '../../models/role';
 import { FormGroup, FormArrayName, FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -64,23 +64,24 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.spinner.show();
     this.authen.login(this.loginForm.value)
-      .pipe(finalize(() => this.condition = false))
+      .pipe(
+        finalize(() => {
+
+        })
+      )
       .subscribe(
         res => {
-          this.user = JSON.parse(res);
-
-          //console.log(res);
-          if (res === 'Login faill') {
-            setTimeout(() => {
+          if (typeof (res) === 'string') {
+            if (res === 'Login faill') {
+              this.condition = true;
+              //this.msg.showError('Error,lease try again later.');
               this.spinner.hide();
-            });
-            this.msg.showError('Error,lease try again later.');
+              return;
+            }
           }
+          this.user = JSON.parse(res);
+          this.spinner.hide();
           if (this.user.role) {
-            setTimeout(() => {
-              /** spinner ends after 5 seconds */
-              this.spinner.hide();
-            });
             localStorage.setItem('user', JSON.stringify(this.user));
             if (this.user.role === Role.Admin) {
               this.router.navigate(['/administration/report']);
@@ -88,21 +89,21 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/home/dashboard']);
             } else {
               this.router.navigate(['/login']);
+              this.condition = false;
               this.msg.showError('You are not authorized');
             }
           }
         },
         err => {
-          setTimeout(() => {
-            this.spinner.hide();
-          });
+          this.spinner.hide();
           console.log(err);
           this.msg.showError('An error occurred, please try again later.');
-          this.condition = true;
+          this.condition = false;
           this.router.navigate(['login']);
         }
       );
   }
 
 }
+
 

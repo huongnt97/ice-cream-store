@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductList } from './../models/productlist.model';
 const API = 'https://ice-cream-backend.herokuapp.com/product';
-const API1 = 'https://ice-cream-backend.herokuapp.com/product?page=';
+const API_STORE = 'https://ice-cream-backend.herokuapp.com/storehave';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +14,8 @@ export class ProductService {
   constructor(private http: HttpClient) {
 
   }
-  getProduct(pageNumber: number) {
-    return this.http.get<ProductList>(API1 + pageNumber);
+  getProduct(search: string, pageNumber: number) {
+    return this.http.get<ProductList>(API + '?keyword=' + search + '&page=' + pageNumber);
   }
   getProductById(id): Observable<Product> {
     return this.http.get<Product>(API + '/' + id);
@@ -27,5 +27,8 @@ export class ProductService {
       this.pages.push(i);
     }
     return this.pages;
+  }
+  getProductOfStore() {
+    return this.http.get<ProductList>(API_STORE);
   }
 }

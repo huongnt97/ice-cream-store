@@ -1,6 +1,6 @@
 <div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" [routerLink]="'/home/dashboard'"><img class="logo" src="/assets/image/logo.jpg" alt=""></a>
+    <a class="navbar-brand" [routerLink]="'/administration/report/shopReport'"><img class="logo" src="/assets/image/logo.jpg" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,19 +28,16 @@
       </ul>
       <ul class="navbar-nav main ">
         <li>
-          <a class="nav-link">
+          <a class="nav-link" [routerLink]="'/administration/profile-admin'">
             <i class="fa fa-fw fa-user"></i>Admin</a>
         </li>
         <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-bell" aria-hidden="true"></i><span class="badge badge-info badge-pill">2</span>
+            <i class="fa fa-bell" aria-hidden="true"></i><span class="badge badge-info badge-pill">{{notice}}</span>
           </a>
           <ul class="dropdown-menu menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item child" href="#">Action</a>
-            <a class="dropdown-item child" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item child" href="#">Something else here</a>
+            <a class="dropdown-item child" [routerLink]="'/administration/shopRequest'" >There are {{notice}} outstanding requests </a>
           </ul>
         </li>
         <li>

@@ -20,6 +20,8 @@ export class ProductMangementComponent implements OnInit {
   totalPages: number;
   pages = [];
   active = 0;
+  search = '';
+  isSearch = false;
   constructor(
     router: Router,
     private productService: ProductService,
@@ -39,7 +41,7 @@ export class ProductMangementComponent implements OnInit {
       image: ['', [Validators.required]]
     });
     this.spinner.show();
-    this.productService.getProduct(this.pageNumber).subscribe(res => {
+    this.productService.getProduct(this.search, this.pageNumber).subscribe(res => {
       this.productList = res;
       this.totalPages = this.productList.totalPages;
       this.pages = this.productService.getPages(this.totalPages);
@@ -54,34 +56,40 @@ export class ProductMangementComponent implements OnInit {
     if (this.productForm.invalid) {
       return;
     }
-
-    alert('SUCCESS!! :-)');
   }
   getList(page: number) {
     this.pageNumber = page;
     this.spinner.show();
-    this.productService.getProduct(page).subscribe(res => {
+    this.productService.getProduct(this.search, page).subscribe(res => {
       this.productList = res;
-      setTimeout(() => {
-        this.spinner.hide();
-      });
+      this.totalPages = this.productList.totalPages;
+      this.pages = this.productService.getPages(this.totalPages);
+      this.spinner.hide();
+      this.onClick(page - 1);
     },
       ({ err }) => { });
   }
   previousPage() {
-    if (this.active - 1 >= 0) {
+    if (this.pageNumber - 1 > 0) {
       this.active = this.active - 1;
-      this.getList(this.active + 1);
+      this.pageNumber = this.pageNumber - 1;
+      this.getList(this.pageNumber);
     }
   }
   nextPage() {
-    if (this.active + 1 < this.totalPages) {
+    if (this.pageNumber + 1 <= this.totalPages) {
       this.active = this.active + 1;
-      this.getList(this.active);
+      this.pageNumber = this.pageNumber + 1;
+      this.getList(this.pageNumber);
     }
   }
   onClick(index: number) {
     this.active = index;
   }
   get formAddProduct() { return this.productForm.controls; }
+  getListProductByName(data: string) {
+    this.search = data;
+    this.pageNumber = 1;
+    this.getList(this.pageNumber);
+  }
 }

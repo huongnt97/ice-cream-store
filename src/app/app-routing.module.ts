@@ -1,14 +1,14 @@
 import { OrderComponent } from './shop-feature/order/order.component';
-import { ProfileComponent } from './shop-feature/profile/profile.component';
+import { ProfileComponent } from './common-feature/profile/profile.component';
 import { AuthenticationGuard } from './service/guards/authentication.guard';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './common-feature/login/login.component';
 import { DashboardComponent } from './shop-feature/dashboard/dashboard.component';
 import { DetailProductComponent } from './admin-feature/detail-product/detail-product.component';
 import { ProductComponent } from './shop-feature/product/product.component';
 import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './common-feature/not-found/not-found.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ReportComponent } from './admin-feature/report/report.component';
 import { ShopReportComponent } from './admin-feature/shop-report/shop-report.component';
@@ -18,7 +18,7 @@ import { ProductMangementComponent } from './admin-feature/product-mangement/pro
 import { Role } from './models/role';
 import { RoleGuard } from './service/guards/role.guard';
 import { ShopRequestComponent } from './admin-feature/shop-request/shop-request.component';
-import { ReplyRegisterComponent } from './reply-register/reply-register.component';
+import { ReplyRegisterComponent } from './common-feature/reply-register/reply-register.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -58,6 +58,7 @@ const routes: Routes = [
       {
         path: 'shopRequest', component: ShopRequestComponent,
       },
+      { path: 'profile-admin', component: ProfileComponent },
       {
         path: 'shop', component: ShopComponent,
       },

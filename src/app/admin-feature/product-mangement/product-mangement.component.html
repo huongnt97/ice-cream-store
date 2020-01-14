@@ -8,10 +8,10 @@
       <div class="col">
         <div class="container">
           <div class="row justify-content-end">
-            <div class="col"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <div class="col"><input #search class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </div>
             <div class="col-12 col-sm-auto">
-              <button class="btn btn-outline-info" type="submit">Search <i class="fa fa-search"></i></button>
+              <button class="btn btn-outline-info" type="submit" (click)="getListProductByName(search.value)">Search <i class="fa fa-search"></i></button>
             </div>
           </div>
         </div>

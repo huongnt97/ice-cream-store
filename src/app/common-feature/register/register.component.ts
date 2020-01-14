@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationService } from '../../service/authentication.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MessageService } from '../service/message.service';
+import { MessageService } from '../../service/message.service';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
@@ -40,10 +40,10 @@ export class RegisterComponent implements OnInit {
   get form() { return this.registerForm.controls; }
   onRegisterSubmit() {
     this.registered = true;
-    this.spinner.show();
     if (this.registerForm.invalid) {
       return;
     }
+    this.spinner.show();
     this.register();
   }
   register() {
