@@ -1,0 +1,117 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-envelope-o"></i> </span>
+      </div>
+      <input formControlName="email" placeholder="Email" class="form-control" placeholder="Email"
+        [ngClass]="{ 'is-invalid': registered && form.email.errors }" type="email" required>
+      <div *ngIf="registered && form.email.errors" class="invalid-feedback">
+        <div *ngIf="form.email.errors.required">Email is required</div>
+        <div *ngIf="form.email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div> <!-- input-group.// -->
+  </div> <!-- form-group// -->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+      </div>
+      <input formControlName="password" placeholder="Password" class="form-control" placeholder="******"
+        [ngClass]="{ 'is-invalid': registered && form.password.errors }" type="password" required>
+      <div *ngIf="registered && form.password.errors" class="invalid-feedback">
+        <div *ngIf="form.password.errors.required">Password is required</div>
+        <div *ngIf="form.password.errors.minlength">Password must be at least 6 characters</div>
+      </div>
+    </div> <!-- input-group.// -->
+  </div> <!-- form-group// -->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-user"></i></span>
+      </div>
+      <input formControlName="fullName" class="form-control" placeholder="Name" type="text"
+        [ngClass]="{ 'is-invalid': registered && form.fullName.errors }" required>
+      <div *ngIf="registered && form.fullName.errors" class="invalid-feedback">
+        <div *ngIf="form.fullName.errors.required">Name is required</div>
+      </div>
+    </div> <!-- input-group.// -->
+  </div> <!-- form-group// -->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-calendar-o"></i></span>
+      </div>
+      <input [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" formControlName="birthday" type="text"
+        id="date-picker-example" class="form-control datepicker" placeholder="Birthday"
+        [ngClass]="{ 'is-invalid': registered && form.birthday.errors }" required>
+      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+      <div *ngIf="registered && form.birthday.errors" class="invalid-feedback">
+        <div *ngIf="form.birthday.errors.required">Birthday is required</div>
+      </div>
+    </div> <!-- input-group.// -->
+  </div> <!-- form-group// -->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-map-marker"></i></span>
+      </div>
+      <input formControlName="address" class="form-control" placeholder="Address" type="text"
+        [ngClass]="{ 'is-invalid': registered && form.address.errors }" required>
+      <div *ngIf="registered && form.address.errors" class="invalid-feedback">
+        <div *ngIf="form.address.errors.required">Address is required</div>
+      </div>
+    </div> <!-- input-group.// -->
+  </div> <!-- form-group// -->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fa fa-phone"></i></span>
+      </div>
+      <input formControlName="numberphone" class="form-control" placeholder="Phone" type="text"
+        [ngClass]="{ 'is-invalid': registered && form.numberphone.errors }" required>
+      <div *ngIf="registered && form.numberphone.errors" class="invalid-feedback">
+        <div *ngIf="form.numberphone.errors.required">Phone is required</div>
+      </div>
+    </div> <!-- input-group.// -->
+  </div> <!-- form-group// -->
+  <div class="form-group">
+    <div class="input-group" >
+      <div class="card" style="width: 100%;">
+        <div class="container" >
+          <div class="row">
+            <div class="col-mx-auto">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-genderless"></i></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-check-inline">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="gender" [value]="true" id="exampleRadios1"
+                    value="option1" checked>
+                  <label class="form-check-label" for="exampleRadios1">
+                    Male
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" formControlName="gender" [value]="false"
+                    id="exampleRadios2" value="option2">
+                  <label class="form-check-label" for="exampleRadios2">
+                    Female
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- input-group.// -->
+  </div> <!-- form-group// -->
+  <div class="form-group">
+    <button type="submit" class="btn btn-info btn-block"> Register </button>
+  </div> <!-- form-group// -->
+</form>
+<ngx-spinner></ngx-spinner>

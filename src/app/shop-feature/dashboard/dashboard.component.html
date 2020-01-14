@@ -1,0 +1,53 @@
+<div class="main">
+  <h3 class="text-center">Report</h3>
+  <hr>
+  <div class="row">
+    <div class="col-4 mx-auto">
+      <div class="card card-body mb-2 h-100" style="background-color: #EEAF44;color:white">
+        <h6>I'm .col-4</h6>
+        <code>.mx-auto</code>
+      </div>
+    </div>
+    <div class="col-4 mx-auto">
+      <div class="card card-body mb-2 h-100 " style="background-color: #23D19A;color:white">
+        <h6>I'm .col-4</h6>
+        <code>.mx-auto</code>
+      </div>
+    </div>
+    <div class="col-4 mx-auto">
+
+      <div class="card card-body mb-2 h-100" style="background-color: #72DADD;color:white">
+        <h6>I'm .col-4</h6>
+        <code>.mx-auto</code>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md ">
+      <div class="chart">
+        <!-- <div class="bg"></div> -->
+        <div class="card">
+          <div [chart]="chart"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="card">
+        <div class="card-header bg-info">
+          <h4 class="text-center">Best selling</h4>
+        </div>
+        <br>
+        <div class="card-body">
+          <div class="notice notice-success">
+            <strong>Notice</strong> notice-success
+          </div>
+
+        </div>
+        <hr>
+      </div>
+    </div>
+
+  </div>
+  <button (click)="update()">Add</button>
+</div>

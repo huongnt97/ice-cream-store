@@ -1,7 +1,13 @@
 
 export class User {
   id: number;
-  username: string;
-  password: string;
-  name: string;
+  email: string;
+  full_name: string;
+  phone: string;
+  birthday: string;
+  avatar: string;
+  gender: boolean;
+  address: string;
+  token?: string;
+  role: string;
 }

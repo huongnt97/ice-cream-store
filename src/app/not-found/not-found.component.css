@@ -1,0 +1,22 @@
+.main {
+  background-image: url("https://w.wallhaven.cc/full/4v/wallhaven-4vp654.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+.text {
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 60px;
+}
+.container {
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+button{
+  width: 15%;
+}

@@ -1,15 +1,22 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { User } from '../models/user.model';
-const API: string = 'http://www.mocky.io/v2/5e1194123100004f00593f16';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
+const API = 'https://ice-cream-backend.herokuapp.com/user';
+const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+const body = JSON.stringify(localStorage.getItem('user'));
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
-  constructor(private http: HttpClient) { }
-  getUsers() {
-    return this.http.get<User[]>(API);
+  changeProfile(profile: {}) {
+    return this.http.put<User>(API, 'update', profile);
+  }
+  getUserRequest(): Observable<User[]> {
+    return this.http.get<User[]>(API + '/get-user-register')
+      ;
   }
 }

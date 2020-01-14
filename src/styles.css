@@ -2,3 +2,6 @@
     width: 0px;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
+* {
+  font-family: "Palatino Linotype", "Book Antiqua", serif;
+}

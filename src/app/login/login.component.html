@@ -1,37 +1,43 @@
 <div class="container-fluid ">
-  <div class="row  align-items-center">
-    <div id="imgBg" class="col-8"></div>
-    <div class="col-4">
-      <div class="">
-        <article class="card-body">
+  <div class="row align-items-center">
+    <div class="col" style="padding: 0;">
+      <div id="imgBg"></div>
+    </div>
+    <div class="col-md-auto">
+      <div class="container">
+        <article class="main">
           <div class="container">
             <div class="row py-lg-5">
               <div class="col card py-3">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active" id="signIn-tab" data-toggle="tab" href="#signIn" role="tab" aria-controls="home"
-                      aria-selected="true">Sign in</a>
+                    <a class="nav-link active" id="signIn-tab" data-toggle="tab" href="#signIn" role="tab"
+                      aria-controls="home" aria-selected="true">Sign in</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="profile"
-                      aria-selected="false">Register</a>
+                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
+                      aria-controls="profile" aria-selected="false">Register</a>
                   </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                   <div class="tab-pane fade show active" id="signIn" role="tabpanel" aria-labelledby="signIn-tab">
 
                     <br>
-                    <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
+                    <h5 class="card-title text-center mb-4 mt-1">Sign in</h5>
                     <hr>
                     <p class="text-danger text-center" *ngIf="condition">usename or password is not correct</p>
-                    <form>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                       <div class="form-group">
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                           </div>
-                          <input name="something" placeholder="Username" [(ngModel)]="username" class="form-control"
-                            placeholder="Email or login" type="email" required>
+                          <input placeholder="Username" class="form-control" placeholder="Email or login" type="email"
+                            required formControlName="email" [ngClass]="{ 'is-invalid': submitted && formlogin.email.errors }">
+                          <div *ngIf="submitted && formlogin.email.errors" class="invalid-feedback">
+                            <div *ngIf="formlogin.email.errors.required">Email is required</div>
+                            <div *ngIf="formlogin.email.errors.email">Email must be a valid email address</div>
+                          </div>
                         </div> <!-- input-group.// -->
                       </div> <!-- form-group// -->
                       <div class="form-group">
@@ -39,12 +45,17 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                           </div>
-                          <input name="something1" placeholder="Password" [(ngModel)]="password" class="form-control" placeholder="******"
-                            type="password" required>
+                          <input formControlName="password" placeholder="Password" class="form-control"
+                            placeholder="******" type="password" required
+                            [ngClass]="{ 'is-invalid': submitted && formlogin.password.errors }">
+                          <div *ngIf="submitted && formlogin.password.errors" class="invalid-feedback">
+                            <div *ngIf="formlogin.password.errors.required">Password is required</div>
+                            <div *ngIf="formlogin.password.errors.minlength">Password must be at least 6 characters</div>
+                          </div>
                         </div> <!-- input-group.// -->
                       </div> <!-- form-group// -->
                       <div class="form-group">
-                        <button type="button" (click)="login()" class="btn btn-primary btn-block"> Login </button>
+                        <button type="submit" class="btn btn-info btn-block"> Login </button>
                       </div> <!-- form-group// -->
                       <div class="row ">
                         <div class="col-sm">
@@ -58,48 +69,17 @@
                   </div>
                   <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
                     <br>
-                    <div><strong>Register</strong></div>
-                    <br>
-                    <form>
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i></span>
-                          </div>
-                          <input name="name" class="form-control"
-                            placeholder="Name" type="email" required>
-                        </div> <!-- input-group.// -->
-                      </div> <!-- form-group// -->
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope-o"></i> </span>
-                          </div>
-                          <input name="email" placeholder="Email"  class="form-control" placeholder="******"
-                            type="email" required>
-                        </div> <!-- input-group.// -->
-                      </div> <!-- form-group// -->
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                          </div>
-                          <input name="password" placeholder="Password" class="form-control" placeholder="******" type="email" required>
-                        </div> <!-- input-group.// -->
-                      </div> <!-- form-group// -->
-                      <div class="form-group">
-                        <button type="button"  class="btn btn-primary btn-block"> Register </button>
-                      </div> <!-- form-group// -->
-                    </form>
-
+                    <h5 class="card-title text-center mb-4 mt-1">Register</h5>
+                    <hr>
+                    <app-register></app-register>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
         </article>
       </div>
     </div>
   </div>
 </div>
+<ngx-spinner></ngx-spinner>

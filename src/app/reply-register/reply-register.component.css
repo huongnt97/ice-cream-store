@@ -1,0 +1,21 @@
+.main {
+  background-image: url("https://w.wallhaven.cc/full/n6/wallhaven-n626jx.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+.container {
+  position: relative;
+  float: left;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+button{
+  width: 15%;
+}
+p{
+  font-weight: bold;
+  font-size: 30px;
+}

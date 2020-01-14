@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div>
+    <h4>REPORT STORE</h4>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-auto ">
+      <br>
+      <div class="card">
+        <ul class="list-group">
+          <li class="list-group-item" [class.active]="active === i" (click)="onClick(i)"
+            *ngFor="let s of item; let i = index;" [routerLink]="'/administration/report/shopReport'">
+            <img src="https://i.pinimg.com/736x/04/67/69/046769a52f8fd7ebcc2d71e047233cd8.jpg"
+            class="img-fluid img-thumbnail" alt="avatar">
+            {{s}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <br>
+      <div class="row">
+        <div class="col-xs-auto">
+          <div class="line"></div>
+        </div>
+        <div class="col">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<ngx-spinner></ngx-spinner>

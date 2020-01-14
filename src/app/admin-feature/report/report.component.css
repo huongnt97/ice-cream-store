@@ -1,0 +1,52 @@
+.card{
+  margin: 30px 50px 30px 50px;
+}
+.main{
+  background-color: lightblue;
+  text-align: center;
+}
+a
+{
+  color:black;
+}
+a
+:hover{
+  background-color: lightpink;
+}
+div.vertical-line{
+  width: 1px;
+  background-color: #17a2b8;
+  height: 100%;
+  float: left;
+}
+.list-group{
+  width: 200px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+.container-fluid{
+  width: 100%;
+}
+.card{
+  width: 280px;
+  margin: 0 auto;
+}
+.list-group{
+  width: 100%;
+}
+.line{
+  border-right: 1px solid gray;
+  height: 100%;
+
+}
+img {
+  height: 50px;
+  width: 50px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}

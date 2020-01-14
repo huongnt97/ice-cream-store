@@ -1,12 +1,9 @@
-export class Product {
-    storeId: number;
-    productId: number;
-    name: string;
-    description: string;
-    image: string;
-    createAt: string;
-    updateAt: string;
-    quantity: number;
-    price: number;
-    status: boolean;
+export class Product{
+  id: number;
+  create_at: string;
+  description: string;
+  images: string;
+  price: number;
+  product_name: string;
+  update_at: string;
 }

@@ -1,16 +1,22 @@
-.card {
-  max-width: 400px;
-  margin: auto;
-}
-
 #imgBg {
-  background-image: url("https://w.wallhaven.cc/full/39/wallhaven-392lk9.jpg");
+  background-image: url("https://w.wallhaven.cc/full/0j/wallhaven-0jwevy.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 750px;
-  width: auto;
+  height: 100vh;
+  width: 100%;
 }
 a{
   color: black;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.card-body{
+  width: 300px;
+}
+.main{
+  width: 350px;
+  margin: 0 auto;
 }

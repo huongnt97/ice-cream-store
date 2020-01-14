@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="leftSide">
+    <div>
+      <label [routerLink]="'/home/profile'">
+        <h3 class="my-4">Ice Cream Shop</h3>
+      </label>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-outline-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"
+            aria-hidden="true"></i> Add product</button>
+      </div>
+      <div class="col">
+        <div class="row justify-content-end">
+          <div class="col"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          </div>
+          <div class="col-12 col-sm-auto">
+            <button class="btn btn-outline-info" type="submit" (click)="search()">Search <i
+                class="fa fa-search"></i></button>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row py-4">
+          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products">
+            <div class="card h-100">
+              <a><img [src]="product.images" [routerLink]="['/home/products', product.id]" class="card-img-top"
+                  alt="..."></a>
+              <div class="card-body">
+                <div class="card-body">
+                  <h5>{{product.product_name}}</h5>
+                  <p class="card-text">{{product.description}}
+                  </p>
+                  <div class="row container">
+                    <div class="col-3 ">
+                      <p>Price:</p>
+                    </div>
+                    <div class="col-8">
+                      <strong>{{product.price|currency}}</strong>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col-4">
+                      <p>Quantity: </p>
+                    </div>
+                    <div class="col-6">
+                      <strong>{{product.quantity}}</strong>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav aria-label="Page navigation example text-center">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Add product for store</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div [formGroup]="formProduct">
+            <div class="row">
+              <div class="col-3 py-1">Name:</div>
+              <div class="col-8">
+                <select class="form-control" id="exampleFormControlSelect1" required>
+                  <option>Product 1</option>
+                  <option>Product 2</option>
+                  <option>Product 3</option>
+                  <option>Product 4</option>
+                  <option>Product 5</option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3 py-3">Description:</div>
+              <div class="col-8"><textarea maxlength="100" class="form-control" aria-label="With textarea"
+                  readonly></textarea></div>
+
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3 py-1">Price:</div>
+              <div class="col-8"><input type="number" value="0" class="form-control" readonly></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3 py-1">Quantity:</div>
+              <div class="col-8"><input type="number" value="0" class="form-control" required></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3 py-1">Status:</div>
+              <div class="col-8"><select class="form-control" id="exampleFormControlSelect1" required>
+                  <option>Available</option>
+                  <option>Unavailable</option>
+                </select></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-3 py-1">Image:</div>
+              <div class="col-8"><img src="http://kinhteluat.tmu.edu.vn/templates/not-found.png"
+                  class="img-fluid img-thumbnail" alt="avatar"></div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary w-25" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-info w-25">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>

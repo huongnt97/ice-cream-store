@@ -1,0 +1,12 @@
+
+.card{
+  margin-bottom: 10px;
+}
+.card-body{
+  color: black;
+}
+.line{
+  border-left: 1px solid gray;
+  height: 100px;
+
+}
