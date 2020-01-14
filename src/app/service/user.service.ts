@@ -16,7 +16,9 @@ export class UserService {
     return this.http.put<User>(API, 'update', profile);
   }
   getUserRequest(): Observable<User[]> {
-    return this.http.get<User[]>(API + '/get-user-register')
-      ;
+    return this.http.get<User[]>(API + '/get-user-register');
+  }
+  approveRequest(id: number) {
+    return this.http.post(API + '/approve', id);
   }
 }

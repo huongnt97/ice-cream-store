@@ -15,17 +15,17 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(public auth: AuthenticationService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (localStorage.getItem('user') && localStorage.getItem('token')) {
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+    if (currentUser && currentUser.token) {
       request = request.clone({
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
-          Authorization: this.auth.getToken(),
+          Authorization: currentUser.token,
         })
       }
 
       );
     }
-
     return next.handle(request);
   }
 }

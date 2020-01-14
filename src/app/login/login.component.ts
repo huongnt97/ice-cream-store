@@ -81,7 +81,6 @@ export class LoginComponent implements OnInit {
               /** spinner ends after 5 seconds */
               this.spinner.hide();
             });
-            localStorage.setItem('token', JSON.stringify(this.user.token));
             localStorage.setItem('user', JSON.stringify(this.user));
             if (this.user.role === Role.Admin) {
               this.router.navigate(['/administration/report']);

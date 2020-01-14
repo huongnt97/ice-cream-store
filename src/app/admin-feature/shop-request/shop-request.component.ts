@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../../service/user.service';
 import { User } from 'src/app/models/user.model';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MessageService } from './../../service/message.service';
 
 @Component({
   selector: 'app-shop-request',
@@ -9,16 +11,19 @@ import { User } from 'src/app/models/user.model';
 })
 export class ShopRequestComponent implements OnInit {
   userRequests: User[];
+  show = '';
   constructor(
     private userService: UserService,
+    private spiner: NgxSpinnerService,
+    private msg: MessageService
   ) { }
 
   ngOnInit() {
-    //const account = JSON.parse(localStorage.getItem('user'));
+    this.spiner.show();
     this.userService.getUserRequest().subscribe(
       res => {
-        //this.userRequests = res;
-        console.log(res);
+        this.userRequests = res;
+        this.spiner.hide();
       },
       err => {
         console.log(err);
@@ -27,5 +32,9 @@ export class ShopRequestComponent implements OnInit {
       }
     );
   }
-
+  approve(id: number) {
+    
+    this.msg.showSuccess('Approve successful');
+    this.show = 'modal';
+  }
 }
