@@ -120,8 +120,8 @@
               <div class="col-8">
                 <div><input type="file" (change)="uploadFile($event)"
                     [ngClass]="{'is-invalid':submitted && formAddProduct.price.errors}"></div>
-                <img  src="http://kinhteluat.tmu.edu.vn/templates/not-found.png" class="img-fluid img-thumbnail"
-                  alt="avatar">
+                <!-- <img  src="http://kinhteluat.tmu.edu.vn/templates/not-found.png" class="img-fluid img-thumbnail"
+                  alt="avatar"> -->
                 <div *ngIf="submitted && formAddProduct.image.errors" class="invalid-feedback">
                   <div *ngIf="formAddProduct.image.errors.required">Image is required</div>
                 </div>
