@@ -22,6 +22,9 @@ export class ShopRequestComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getListRequest();
+  }
+  getListRequest() {
     this.spiner.show();
     this.userService.getUserRequest().subscribe(
       res => {
@@ -38,7 +41,19 @@ export class ShopRequestComponent implements OnInit {
     );
   }
   approve(id: number) {
-    this.msg.showSuccess('Approve successful');
-    this.show = 'modal';
+    this.spiner.show();
+    this.userService.approveRequest(id).subscribe(
+      res => {
+        console.log(res);
+        this.msg.showSuccess('Approve successful');
+        this.getListRequest();
+        this.spiner.hide();
+      },
+      err => {
+        this.msg.showError('Approve fail');
+        console.log(err);
+        this.spiner.hide();
+      }
+    );
   }
 }

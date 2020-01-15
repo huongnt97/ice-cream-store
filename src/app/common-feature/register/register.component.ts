@@ -6,7 +6,7 @@ import { MessageService } from '../../service/message.service';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   registered = false;
-
+  phoneNumberPattern = '(09|01[2|6|8|9|3])+([0-9]{8})\\b';
   constructor(
     private authen: AuthenticationService,
     private formBuilder: FormBuilder,
@@ -50,18 +50,22 @@ export class RegisterComponent implements OnInit {
     const body = this.registerForm.value;
     body.birthday = this.datePipe.transform(body.birthday, 'yyyy/MM/dd');
     console.log(this.registerForm.value);
-    this.authen.register(this.registerForm.value).subscribe(
+    this.authen.register(this.registerForm.value)
+    .pipe(
+      finalize(() => {
+        this.spinner.hide();
+      })
+    )
+    .subscribe(
       res => {
         this.msg.showSuccess('Register successful');
         console.log(res);
         this.router.navigate(['/reply']);
-        setTimeout(() => {
-          this.spinner.hide();
-        });
+        this.spinner.hide();
       },
       err => {
         this.msg.showError('Register fail. Please try again later');
-        console.log(err);
+        this.spinner.hide();
       }
     );
   }

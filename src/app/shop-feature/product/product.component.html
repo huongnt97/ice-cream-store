@@ -12,11 +12,10 @@
       </div>
       <div class="col">
         <div class="row justify-content-end">
-          <div class="col"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <div class="col"><input #search class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           </div>
           <div class="col-12 col-sm-auto">
-            <button class="btn btn-outline-info" type="submit" (click)="search()">Search <i
-                class="fa fa-search"></i></button>
+            <button class="btn btn-outline-info" type="submit" (click)="getListProductByName(search.value)">Search <i class="fa fa-search"></i></button>
           </div>
         </div>
         <br>
@@ -27,34 +26,27 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row py-4">
-          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products">
+          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of productList?.list">
             <div class="card h-100">
-              <a><img [src]="product.images" [routerLink]="['/home/products', product.id]" class="card-img-top"
+              <a><img [src]="product?.images"  class="card-img-top"
                   alt="..."></a>
               <div class="card-body">
                 <div class="card-body">
-                  <h5>{{product.product_name}}</h5>
-                  <p class="card-text">{{product.description}}
+                  <h5>{{product?.product_name}}</h5>
+                  <p class="card-text">{{product?.description}}
                   </p>
-                  <div class="row container">
-                    <div class="col-3 ">
-                      <p>Price:</p>
+                  <div class="row">
+                    <div class="col-md-auto">
+                      <h6>Price:</h6>
+
                     </div>
-                    <div class="col-8">
-                      <strong>{{product.price|currency}}</strong>
+                    <div class="col">
+                      <strong>{{product?.price|currency}}</strong>
                     </div>
                   </div>
-                  <!-- <div class="row">
-                    <div class="col-4">
-                      <p>Quantity: </p>
-                    </div>
-                    <div class="col-6">
-                      <strong>{{product.quantity}}</strong>
-                    </div>
-                  </div> -->
+
                 </div>
               </div>
-
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
@@ -64,20 +56,19 @@
       </div>
     </div>
     <nav aria-label="Page navigation example text-center">
-      <ul class="pagination justify-content-center">
+      <ul class="pagination justify-content-center" >
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
+          <a class="page-link" (click)="previousPage()" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
             <span class="sr-only">Previous</span>
           </a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item" (click)="onClick(i)"  [class.active]="active === i "
+         *ngFor="let page of pages; let i = index;"><a class="page-link" (click)="getList(page)">{{page}}</a></li>
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
+          <a class="page-link" (click)="nextPage()" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only"></span>
           </a>
         </li>
       </ul>

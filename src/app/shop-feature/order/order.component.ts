@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NoticeService } from 'src/app/service/notice.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-order',
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class OrderComponent implements OnInit {
   available = 0;
   deliver = 0;
-  constructor() { }
+
+  constructor(
+    private noticeService: NoticeService,
+  ) { }
 
   ngOnInit() {
+
   }
   confirm() {
     this.available = 50;

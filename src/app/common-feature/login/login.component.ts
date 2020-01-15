@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpErrorResponse } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/finally';
-import { finalize } from 'rxjs/operators'
+import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -38,11 +38,10 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.checkLogin();
-
   }
   checkLogin() {
-    if (localStorage.getItem('user') && localStorage.getItem('token')) {
-      this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    if (this.currentUser && this.currentUser.token) {
       if (this.currentUser.role === Role.Admin) {
         this.router.navigate(['/administration/report']);
       } else if (this.currentUser.role === Role.Store) {
@@ -66,7 +65,7 @@ export class LoginComponent implements OnInit {
     this.authen.login(this.loginForm.value)
       .pipe(
         finalize(() => {
-
+          this.spinner.hide();
         })
       )
       .subscribe(
@@ -74,7 +73,6 @@ export class LoginComponent implements OnInit {
           if (typeof (res) === 'string') {
             if (res === 'Login faill') {
               this.condition = true;
-              //this.msg.showError('Error,lease try again later.');
               this.spinner.hide();
               return;
             }

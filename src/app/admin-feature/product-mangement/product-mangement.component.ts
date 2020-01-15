@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/service/product.service';
@@ -27,35 +27,46 @@ export class ProductMangementComponent implements OnInit {
     private productService: ProductService,
     private msg: MessageService,
     private formBuilder: FormBuilder,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef
   ) {
 
   }
 
   ngOnInit() {
-
     this.productForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      product_name: ['', Validators.required],
       description: ['', Validators.required],
       price: ['', [Validators.required]],
-      image: ['', [Validators.required]]
+      image: [null]
     });
-    this.spinner.show();
-    this.productService.getProduct(this.search, this.pageNumber).subscribe(res => {
-      this.productList = res;
-      this.totalPages = this.productList.totalPages;
-      this.pages = this.productService.getPages(this.totalPages);
-      setTimeout(() => {
-        this.spinner.hide();
-      });
-    },
-      ({ err }) => { });
+    this.getList(this.pageNumber);
   }
   onSubmit() {
     this.submitted = true;
     if (this.productForm.invalid) {
       return;
     }
+
+    const formData = new FormData();
+    formData.append('product_name', this.productForm.get('product_name').value);
+    formData.append('description', this.productForm.get('description').value);
+    formData.append('price', this.productForm.get('price').value);
+    formData.append('image', this.productForm.get('image').value);
+    console.log(formData.get('product_name'));
+    this.productService.addProduct(this.productForm.value).subscribe(
+      res => {
+        console.log(res);
+        this.pageNumber = 1;
+        this.getList(this.pageNumber);
+        this.msg.showSuccess('Add successful');
+      },
+      err => {
+        console.log(err);
+        this.msg.showError('Add fail');
+      }
+    );
   }
   getList(page: number) {
     this.pageNumber = page;
@@ -67,7 +78,16 @@ export class ProductMangementComponent implements OnInit {
       this.spinner.hide();
       this.onClick(page - 1);
     },
-      ({ err }) => { });
+      err => {
+        this.spinner.hide();
+        this.msg.showError('Somthing wrong');
+      },
+      () => {
+        this.spinner.hide();
+        //this.msg.showError(' wrong');
+      }
+
+    );
   }
   previousPage() {
     if (this.pageNumber - 1 > 0) {
@@ -91,5 +111,12 @@ export class ProductMangementComponent implements OnInit {
     this.search = data;
     this.pageNumber = 1;
     this.getList(this.pageNumber);
+  }
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.productForm.patchValue({
+      image: file
+    });
+    this.productForm.get('image').updateValueAndValidity();
   }
 }

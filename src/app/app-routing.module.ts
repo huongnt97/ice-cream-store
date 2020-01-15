@@ -12,13 +12,13 @@ import { NotFoundComponent } from './common-feature/not-found/not-found.componen
 import { AdministrationComponent } from './administration/administration.component';
 import { ReportComponent } from './admin-feature/report/report.component';
 import { ShopReportComponent } from './admin-feature/shop-report/shop-report.component';
-import { ShopComponent } from './admin-feature/shop/shop.component';
 import { ShopDetailComponent } from './admin-feature/shop-detail/shop-detail.component';
 import { ProductMangementComponent } from './admin-feature/product-mangement/product-mangement.component';
 import { Role } from './models/role';
 import { RoleGuard } from './service/guards/role.guard';
 import { ShopRequestComponent } from './admin-feature/shop-request/shop-request.component';
 import { ReplyRegisterComponent } from './common-feature/reply-register/reply-register.component';
+import { UserComponent } from './admin-feature/user/user.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -60,7 +60,7 @@ const routes: Routes = [
       },
       { path: 'profile-admin', component: ProfileComponent },
       {
-        path: 'shop', component: ShopComponent,
+        path: 'user', component: UserComponent,
       },
       { path: 'shop-detail', component: ShopDetailComponent },
       { path: '', redirectTo: '/administration/report', pathMatch: 'full' },
@@ -77,4 +77,5 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
 })
+
 export class AppRoutingModule { }

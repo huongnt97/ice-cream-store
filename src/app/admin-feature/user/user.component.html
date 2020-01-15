@@ -1,0 +1,50 @@
+<div class="container">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">
+      <h5>List of user</h5>
+    </a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" #searchUser type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="onSearchUser(searchUser.value)" type="submit">Search</button>
+    </form>
+  </nav>
+  <br>
+  <div>
+    <table class="table">
+      <thead>
+        <tr class="header">
+          <th scope="col">Id</th>
+          <th scope="col">FullName</th>
+          <th scope="col">DOB</th>
+          <th scope="col">Address</th>
+          <th scope="col">Role</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of listUser?.list">
+        <tr>
+          <th scope="row">{{user?.id}}</th>
+          <td>{{user?.full_name}}</td>
+          <td>{{user?.birthday|date:'dd/MM/yyyy'}}</td>
+          <td>{{user?.address}}</td>
+          <td>{{user?.role}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      <li class="page-item ">
+        <a class="page-link" (click)="previous()">Previous</a>
+      </li>
+      <li class="page-item" (click)="onClick(i)" [class.active]="active===i"
+        *ngFor="let page of pages;let i=index"
+      >
+        <a class="page-link" (click)="getListUser(page)">{{page}}</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" (click)="next()" [ngClass]="{'disabled' : !disabled}">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<ngx-spinner></ngx-spinner>

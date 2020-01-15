@@ -68,10 +68,11 @@
       <div class="input-group-prepend">
         <span class="input-group-text"> <i class="fa fa-phone"></i></span>
       </div>
-      <input formControlName="numberphone" class="form-control" placeholder="Phone" type="text"
+      <input formControlName="numberphone" class="form-control" placeholder="Phone" type="text" [pattern]="phoneNumberPattern"
         [ngClass]="{ 'is-invalid': registered && form.numberphone.errors }" required>
       <div *ngIf="registered && form.numberphone.errors" class="invalid-feedback">
         <div *ngIf="form.numberphone.errors.required">Phone is required</div>
+        <div *ngIf="form.numberphone.errors.invalid">The format of the phone number is incorrect</div>
       </div>
     </div> <!-- input-group.// -->
   </div> <!-- form-group// -->

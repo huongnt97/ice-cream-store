@@ -25,7 +25,7 @@
         <div class="row py-4">
           <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of productList?.list">
             <div class="card h-100">
-              <a><img [src]="product?.images" [routerLink]="['/administration/productManagement', product.id]" class="card-img-top"
+              <a><img [src]="product?.images||''" [routerLink]="['/administration/productManagement', product?.id]" class="card-img-top"
                   alt="..."></a>
               <div class="card-body">
                 <div class="card-body">
@@ -85,10 +85,10 @@
             <div class="row">
               <div class="col-3 py-1">Name:</div>
               <div class="col-8">
-                <input id="name" type="text" required class="form-control" formControlName="name"
-                  [ngClass]="{ 'is-invalid': submitted && formAddProduct.name.errors }">
-                <div *ngIf="submitted && formAddProduct.name.errors" class="invalid-feedback">
-                  <div *ngIf="formAddProduct.name.errors.required">Name is required</div>
+                <input id="name" type="text" required class="form-control" formControlName="product_name"
+                  [ngClass]="{ 'is-invalid': submitted && formAddProduct.product_name.errors }">
+                <div *ngIf="submitted && formAddProduct.product_name.errors" class="invalid-feedback">
+                  <div *ngIf="formAddProduct.product_name.errors.required">Name is required</div>
                 </div>
               </div>
             </div>
@@ -118,9 +118,9 @@
             <div class="row">
               <div class="col-3 py-1">Image:</div>
               <div class="col-8">
-                <div><input type="file" class="form-control" formControlName="image"
+                <div><input type="file" (change)="uploadFile($event)"
                     [ngClass]="{'is-invalid':submitted && formAddProduct.price.errors}"></div>
-                <img src="http://kinhteluat.tmu.edu.vn/templates/not-found.png" class="img-fluid img-thumbnail"
+                <img  src="http://kinhteluat.tmu.edu.vn/templates/not-found.png" class="img-fluid img-thumbnail"
                   alt="avatar">
                 <div *ngIf="submitted && formAddProduct.image.errors" class="invalid-feedback">
                   <div *ngIf="formAddProduct.image.errors.required">Image is required</div>
@@ -134,7 +134,7 @@
                 <div class="container-fluid d-flex justify-content-center">
                   <div class="row">
                     <div class="col">
-                      <button type="submit" class="btn btn-info">Save</button>
+                      <button type="submit" class="btn btn-info" data-dismiss="modal">Save</button>
                     </div>
                     <div class="col">
                       <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -1,10 +1,11 @@
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductList } from './../models/productlist.model';
 const API = 'https://ice-cream-backend.herokuapp.com/product';
 const API_STORE = 'https://ice-cream-backend.herokuapp.com/storehave';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +29,10 @@ export class ProductService {
     }
     return this.pages;
   }
-  getProductOfStore() {
-    return this.http.get<ProductList>(API_STORE);
+  getProductOfStore(id: number,  pageNumber: number) {
+    return this.http.get<ProductList>(API_STORE + '?store_id=' + id + '&page=' + pageNumber);
+  }
+  addProduct(product: {}) {
+    return this.http.post(API, product);
   }
 }

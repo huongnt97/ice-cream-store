@@ -21,7 +21,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ReportComponent } from './admin-feature/report/report.component';
 import { ShopReportComponent } from './admin-feature/shop-report/shop-report.component';
-import { ShopComponent } from './admin-feature/shop/shop.component';
 import { ShopDetailComponent } from './admin-feature/shop-detail/shop-detail.component';
 import { TokenInterceptor } from './service/TokenInterceptor ';
 import { ProductMangementComponent } from './admin-feature/product-mangement/product-mangement.component';
@@ -37,12 +36,12 @@ import { StoreModule } from '@ngrx/store';
 import { ShopRequestComponent } from './admin-feature/shop-request/shop-request.component';
 import { ReplyRegisterComponent } from './common-feature/reply-register/reply-register.component';
 import { RouterModule } from '@angular/router';
+import { UserComponent } from './admin-feature/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    ShopComponent,
     HomeComponent,
     NotFoundComponent,
     LoginComponent,
@@ -60,6 +59,7 @@ import { RouterModule } from '@angular/router';
     RegisterComponent,
     ShopRequestComponent,
     ReplyRegisterComponent,
+    UserComponent,
 
   ],
   imports: [
