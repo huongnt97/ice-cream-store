@@ -31,7 +31,6 @@ export class ProductMangementComponent implements OnInit {
     private fb: FormBuilder,
     private cd: ChangeDetectorRef
   ) {
-
   }
 
   ngOnInit() {
@@ -44,17 +43,12 @@ export class ProductMangementComponent implements OnInit {
     this.getList(this.pageNumber);
   }
   onSubmit() {
+    console.log('Okk');
     this.submitted = true;
     if (this.productForm.invalid) {
       return;
     }
-
-    const formData = new FormData();
-    formData.append('product_name', this.productForm.get('product_name').value);
-    formData.append('description', this.productForm.get('description').value);
-    formData.append('price', this.productForm.get('price').value);
-    formData.append('image', this.productForm.get('image').value);
-    console.log(formData.get('product_name'));
+    console.log('Ok');
     this.productService.addProduct(this.productForm.value).subscribe(
       res => {
         console.log(res);
@@ -68,6 +62,7 @@ export class ProductMangementComponent implements OnInit {
       }
     );
   }
+
   getList(page: number) {
     this.pageNumber = page;
     this.spinner.show();
@@ -112,11 +107,5 @@ export class ProductMangementComponent implements OnInit {
     this.pageNumber = 1;
     this.getList(this.pageNumber);
   }
-  uploadFile(event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.productForm.patchValue({
-      image: file
-    });
-    this.productForm.get('image').updateValueAndValidity();
-  }
+
 }

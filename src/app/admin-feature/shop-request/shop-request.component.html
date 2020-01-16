@@ -28,7 +28,7 @@
             </div>
           </div>
           <p class="card-text">Address: {{user?.address}}</p>
-          <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Approve</button>
+          <button class="btn btn-info" (click)="approve(user.id)" >Approve</button>
         </div>
       </div>
     </div>
